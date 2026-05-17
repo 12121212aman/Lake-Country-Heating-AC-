@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #1E3A8A;
+  --color-orange: #F97316;
+  --color-emergency: #DC2626;
+  --color-accent-blue: #3B82F6;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.neon-border {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.chatbot-glow {
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+}

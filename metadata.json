@@ -1,0 +1,6 @@
+{
+  "name": "Lake Country Heating & AC",
+  "description": "Professional HVAC services in Kelowna and Lake Country. 24/7 emergency repairs, installations, and maintenance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
