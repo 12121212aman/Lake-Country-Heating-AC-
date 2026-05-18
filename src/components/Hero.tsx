@@ -3,7 +3,8 @@ import { motion } from 'motion/react';
 import { Phone, CheckCircle2, ShieldCheck, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const HERO_IMAGE = '/src/assets/images/hvac_hero_1778994508019.png';
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop';
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop';
 
 export default function Hero() {
   return (
@@ -13,7 +14,10 @@ export default function Hero() {
         <img 
           src={HERO_IMAGE} 
           alt="HVAC technician at work" 
+          loading="lazy"
+          onError={(e) => { (e.target as HTMLImageElement).src = FALLBACK_IMAGE; }}
           className="w-full h-full object-cover opacity-30"
+          style={{ objectPosition: 'center' }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/80 to-transparent"></div>
       </div>

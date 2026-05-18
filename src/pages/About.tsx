@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Award, CheckCircle2, MapPin, Users } from 'lucide-react';
 
-const TEAM_IMAGE = '/src/assets/images/hvac_team_1778994555027.png';
+const TEAM_IMAGE = 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop';
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop';
 
 export default function About() {
   return (
@@ -45,7 +46,13 @@ export default function About() {
               className="relative"
             >
               <div className="rounded-[3rem] overflow-hidden shadow-2xl relative z-10 aspect-[4/5] md:aspect-auto">
-                <img src={TEAM_IMAGE} alt="The Team" className="w-full h-full object-cover" />
+                <img 
+                  src={TEAM_IMAGE} 
+                  alt="The Team" 
+                  loading="lazy"
+                  onError={(e) => { (e.target as HTMLImageElement).src = FALLBACK_IMAGE; }}
+                  className="w-full h-full object-cover" 
+                />
               </div>
               {/* Decorative elements */}
               <div className="absolute -top-10 -right-10 w-64 h-64 bg-orange/10 rounded-full blur-3xl"></div>

@@ -8,21 +8,26 @@ const POSTS = [
     title: "5 Tips to Lower Your AC Bill This Summer",
     excerpt: "Keep your home cool without breaking the bank. Learn how simple maintenance can save you hundreds.",
     date: "May 15, 2026",
-    category: "Energy Savings"
+    category: "Energy Savings",
+    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=1200&auto=format&fit=crop"
   },
   {
     title: "Is It Time to Replace Your Furnace?",
     excerpt: "Warning signs that your heating system is reaching the end of its life and what to do about it.",
     date: "May 10, 2026",
-    category: "Heating"
+    category: "Heating",
+    image: "https://images.unsplash.com/photo-1631545724185-3511eb311f6d?q=80&w=1200&auto=format&fit=crop"
   },
   {
     title: "The Importance of Regular Duct Cleaning",
     excerpt: "Why clean air ducts are essential for your family's health and system efficiency.",
     date: "May 05, 2026",
-    category: "Air Quality"
+    category: "Air Quality",
+    image: "https://images.unsplash.com/photo-1558227751-fcd973f05931?q=80&w=1200&auto=format&fit=crop"
   }
 ];
+
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop';
 
 export default function Blog() {
   return (
@@ -43,11 +48,18 @@ export default function Blog() {
                 transition={{ delay: i * 0.1 }}
                 className="group cursor-pointer"
               >
-                <div className="aspect-video bg-gray-100 rounded-3xl mb-6 overflow-hidden relative">
+                <div className="aspect-video bg-gray-100 rounded-3xl mb-6 overflow-hidden relative shadow-lg">
                   <div className="absolute top-4 left-4 bg-orange text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest z-10">
                     {post.category}
                   </div>
-                  <div className="w-full h-full bg-navy/5 group-hover:bg-navy/10 transition-colors"></div>
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    loading="lazy"
+                    onError={(e) => { (e.target as HTMLImageElement).src = FALLBACK_IMAGE; }}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors"></div>
                 </div>
                 <div className="flex items-center gap-4 text-gray-400 text-[10px] font-black uppercase tracking-widest mb-4">
                   <span className="flex items-center gap-1.5"><Calendar size={12} /> {post.date}</span>

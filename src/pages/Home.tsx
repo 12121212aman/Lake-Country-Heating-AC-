@@ -1,12 +1,9 @@
 import React from 'react';
 import Hero from '@/components/Hero';
-import ServiceCard from '@/components/ServiceCard';
+import ServiceIconCard from '@/components/ServiceIconCard';
 import QuoteForm from '@/components/QuoteForm';
 import { Wind, Thermometer, ShieldCheck, Clock, Wrench, Droplet, Star } from 'lucide-react';
 import { motion } from 'motion/react';
-
-const AC_IMAGE = '/src/assets/images/ac_service_1778994523825.png';
-const HEAT_IMAGE = '/src/assets/images/heating_service_1778994538977.png';
 
 export default function Home() {
   return (
@@ -14,36 +11,49 @@ export default function Home() {
       <Hero />
 
       {/* Services Overview */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-orange font-black uppercase tracking-[0.3em] text-xs">Our Expertise</span>
-            <h2 className="text-4xl md:text-5xl font-black text-navy mt-4 mb-6">HVAC SOLUTIONS FOR EVERY SEASON</h2>
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Background Accents / Floating Particles */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-20">
+          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-400 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-orange-400 rounded-full blur-[120px] animate-pulse [animation-delay:2s]" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <span className="text-orange font-black uppercase tracking-[0.4em] text-[10px] bg-orange/10 px-4 py-1.5 rounded-full inline-block mb-4">
+              Premium HVAC Solutions
+            </span>
+            <h2 className="text-4xl md:text-6xl font-black text-navy mt-4 mb-6 leading-tight">
+              DESIGNED FOR <br /><span className="text-orange">MAXIMUM COMFORT</span>
+            </h2>
             <p className="text-gray-500 font-medium text-lg leading-relaxed">
-              From emergency repairs to precision installations, we provide Lake Country and Kelowna with top-tier heating and cooling services.
+              We've redesigned home comfort. No more guesswork—just high-performance heating and cooling solutions backed by professional expertise.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ServiceCard 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+            <ServiceIconCard 
               title="Air Conditioning"
-              description="Keep your home cool and comfortable with our expert AC repair, maintenance, and installation services."
-              icon={<Wind />}
-              image={AC_IMAGE}
+              description="High-precision cooling systems designed to withstand the hottest Okanagan summers."
+              icon={<Wind className="w-10 h-10" />}
+              features={["24/7 Repairs", "Efficiency Tune-ups", "Refrigerant Management"]}
+              gradient="from-blue-400 to-cyan-500"
               delay={0.1}
             />
-            <ServiceCard 
+            <ServiceIconCard 
               title="Heating Systems"
-              description="Reliable furnace repair and high-efficiency heating solutions to keep your family warm all winter."
-              icon={<Thermometer />}
-              image={HEAT_IMAGE}
+              description="Reliable furnace solutions that keep your family warm even on the coldest winter nights."
+              icon={<Thermometer className="w-10 h-10" />}
+              features={["Furnace Diagnostics", "Safety Inspections", "Heat Pump Specialist"]}
+              gradient="from-orange-500 to-red-600"
               delay={0.2}
             />
-            <ServiceCard 
-              title="Maintenance Plans"
-              description="Preventive care to extend the life of your equipment and lower your monthly energy bills."
-              icon={<ShieldCheck />}
-              image={AC_IMAGE} // Use AC as placeholder
+            <ServiceIconCard 
+              title="Priority Club"
+              description="Exclusive maintenance membership that keeps your system running at peak performance year-round."
+              icon={<ShieldCheck className="w-10 h-10" />}
+              features={["Priority Scheduling", "15% Member Discount", "Bi-Annual Tune-ups"]}
+              gradient="from-navy to-blue-800"
               delay={0.3}
             />
           </div>
